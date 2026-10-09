@@ -130,10 +130,10 @@ const Home = () => {
         <title>Nazma Hevano —  Web Developer & Technical Support</title>
         <meta name="description" content="Portfolio Website Nazma Hevano, Web Developer & Technical Support. Turning ideas into digital experiences, from design to deployment, with a practical approach to technology and problem-solving." />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://ekizr.com" />
+        <link rel="canonical" href="https://nazmahevano-portfolio.vercel.app" />
         <meta property="og:title" content="Nazma Hevano — Web Developer & Technical Support" />
         <meta property="og:description" content="Portfolio Website Nazma Hevano, Web Developer & Technical Support." />
-        <meta property="og:url" content="https://ekizr.com" />
+        <meta property="og:url" content="https://nazmahevano-portfolio.vercel.app" />
         <meta property="og:type" content="website" />
         <script type="application/ld+json">{`
           {
@@ -141,7 +141,7 @@ const Home = () => {
             "@type": "Person",
             "name": "Nazma Hevano",
             "jobTitle": "Web Developer & Technical Support",
-            "url": "https://ekizr.com",
+            "url": https://nazmahevano-portfolio.vercel.app",
             "sameAs": [
               "https://github.com/nazmahevano",
               "https://www.linkedin.com/in/nazma-hevano-51619b245/",
