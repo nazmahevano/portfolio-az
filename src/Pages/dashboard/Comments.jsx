@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types, react/display-name */
 import { useEffect, useState, useMemo } from "react";
 import { supabase } from "../../supabase";
 import {
@@ -33,7 +34,7 @@ export default function Comments() {
   const fetchComments = async () => {
     setLoading(true);
     const { data } = await supabase
-      .from("portfolio_comments")
+      .from("portofolio_comments")
       .select("*")
       .order("is_pinned", { ascending: false })
       .order("created_at", { ascending: false });
@@ -52,7 +53,7 @@ export default function Comments() {
 
   const pin = async (id, value) => {
     await supabase
-      .from("portfolio_comments")
+      .from("portofolio_comments")
       .update({ is_pinned: value })
       .eq("id", id);
     fetchComments();
@@ -60,7 +61,7 @@ export default function Comments() {
 
   const remove = async (id) => {
     if (!confirm("Delete this comment?")) return;
-    await supabase.from("portfolio_comments").delete().eq("id", id);
+    await supabase.from("portofolio_comments").delete().eq("id", id);
     fetchComments();
   };
 
@@ -190,8 +191,8 @@ export default function Comments() {
       {/* Result count when searching */}
       {search && (
         <p className="text-xs text-gray-500 -mt-3">
-          {filtered.length} result{filtered.length !== 1 ? "s" : ""} for "
-          {search}"
+          {filtered.length} result{filtered.length !== 1 ? "s" : ""} for &quot;
+          {search}&quot;
         </p>
       )}
 

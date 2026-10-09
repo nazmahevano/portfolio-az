@@ -1,37 +1,24 @@
-import React, { useState, useEffect, useCallback, memo } from "react"
+/* eslint-disable react/prop-types, react/display-name */
+import { useState, useEffect, useCallback, memo } from "react"
 import { Helmet } from "react-helmet-async"
-import { Github, Linkedin, Mail, ExternalLink, Instagram, Sparkles } from "lucide-react"
+import { Github, Linkedin, Mail, ExternalLink, Instagram } from "lucide-react"
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
-const StatusBadge = memo(() => (
-  <div className="inline-block animate-float lg:mx-0" data-aos="zoom-in" data-aos-delay="400">
-    <div className="relative group">
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-full blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
-      <div className="relative px-3 sm:px-4 py-2 rounded-full bg-black/40 backdrop-blur-xl border border-white/10">
-        <span className="bg-gradient-to-r from-[#6366f1] to-[#a855f7] text-transparent bg-clip-text sm:text-sm text-[0.7rem] font-medium flex items-center">
-          <Sparkles className="sm:w-4 sm:h-4 w-3 h-3 mr-2 text-blue-400" />
-          Ready to Innovate
-        </span>
-      </div>
-    </div>
-  </div>
-));
-
 const MainTitle = memo(() => (
-  <div className="space-y-2" data-aos="fade-up" data-aos-delay="600">
-    <h1 className="text-5xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
+  <div className="pt-40 space-y-4" data-aos="fade-up" data-aos-delay="600">
+    <h1 className="text-3xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-5xl font-bold tracking-tight">
       <span className="relative inline-block">
         <span className="absolute -inset-2 bg-gradient-to-r from-[#6366f1] to-[#a855f7] blur-2xl opacity-20"></span>
         <span className="relative bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
-          Frontend
+          Web Developer &nbsp;&nbsp;&nbsp;&
         </span>
       </span>
       <br />
       <span className="relative inline-block mt-2">
         <span className="absolute -inset-2 bg-gradient-to-r from-[#6366f1] to-[#a855f7] blur-2xl opacity-20"></span>
         <span className="relative bg-gradient-to-r from-[#6366f1] to-[#a855f7] bg-clip-text text-transparent">
-          Developer
+          Technical Support
         </span>
       </span>
     </h1>
@@ -77,15 +64,15 @@ const TYPING_SPEED = 100;
 const ERASING_SPEED = 50;
 const PAUSE_DURATION = 2000;
 const WORDS = ["Network & Telecom Student", "Tech Enthusiast"];
-const TECH_STACK = ["React", "Javascript", "Node.js", "Tailwind"];
+const TECH_STACK = ["Python/Django", "PHP/Laravel", "C++","HTML/CSS", "Bootstrap", "JavaScript", "React", "PostgreSQL", "MySQL", "Linux", "Vercel", "Figma", "Canva"];
 const SOCIAL_LINKS = [
-  { icon: Github, link: "https://github.com/EkiZR", label: "GitHub Profile" },
-  { icon: Linkedin, link: "https://www.linkedin.com/in/ekizr/", label: "LinkedIn Profile" },
-  { icon: Instagram, link: "https://www.instagram.com/ekizr_/?hl=id", label: "Instagram Profile" }
+  { icon: Github, link: "https://github.com/nazmahevano", label: "GitHub Profile" },
+  { icon: Linkedin, link: "https://www.linkedin.com/in/nazma-hevano-51619b245/", label: "LinkedIn Profile" },
+  { icon: Instagram, link: "https://www.instagram.com/nazmahevano_/?hl=id", label: "Instagram Profile" }
 ];
 
 const Home = () => {
-  const [text, setText] = useState("")
+  const [setText] = useState('')
   const [isTyping, setIsTyping] = useState(true)
   const [wordIndex, setWordIndex] = useState(0)
   const [charIndex, setCharIndex] = useState(0)
@@ -135,30 +122,30 @@ const Home = () => {
       isTyping ? TYPING_SPEED : ERASING_SPEED
     );
     return () => clearTimeout(timeout);
-  }, [handleTyping]);
+  }, [isTyping]);
 
   return (
     <>
       <Helmet>
-        <title>Eki Zulfar Rachman — Frontend Web Developer</title>
-        <meta name="description" content="Website resmi Eki Zulfar Rachman, Front-End Web Developer. Saya berfokus pada penciptaan pengalaman digital yang menarik dan selalu berupaya memberikan solusi terbaik dalam setiap proyek yang saya kerjakan." />
-     <meta name="robots" content="index, follow" />
+        <title>Nazma Hevano —  Web Developer & Technical Support</title>
+        <meta name="description" content="Portfolio Website Nazma Hevano, Web Developer & Technical Support. Turning ideas into digital experiences, from design to deployment, with a practical approach to technology and problem-solving." />
+        <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://ekizr.com" />
-        <meta property="og:title" content="Eki Zulfar Rachman — Frontend Web Developer" />
-     <meta property="og:description" content="Website resmi dan portofolio Eki Zulfar Rachman, Front-End Web Developer." />
+        <meta property="og:title" content="Nazma Hevano — Web Developer & Technical Support" />
+        <meta property="og:description" content="Portfolio Website Nazma Hevano, Web Developer & Technical Support." />
         <meta property="og:url" content="https://ekizr.com" />
         <meta property="og:type" content="website" />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
             "@type": "Person",
-            "name": "Eki Zulfar Rachman",
-            "jobTitle": "Frontend Developer",
+            "name": "Nazma Hevano",
+            "jobTitle": "Web Developer & Technical Support",
             "url": "https://ekizr.com",
             "sameAs": [
-              "https://github.com/EkiZR",
-              "https://www.linkedin.com/in/ekizr/",
-              "https://www.instagram.com/ekizr_/"
+              "https://github.com/nazmahevano",
+              "https://www.linkedin.com/in/nazma-hevano-51619b245/",
+              "https://www.instagram.com/nazmahevano_/?hl=id",
             ]
           }
         `}</script>
@@ -173,22 +160,13 @@ const Home = () => {
                 data-aos="fade-right"
                 data-aos-delay="200">
                 <div className="space-y-4 sm:space-y-6">
-                  <StatusBadge />
                   <MainTitle />
-
-                  {/* Typing Effect */}
-                  <div className="h-8 flex items-center" data-aos="fade-up" data-aos-delay="800">
-                    <span className="text-xl md:text-2xl bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent font-light">
-                      {text}
-                    </span>
-                    <span className="w-[3px] h-6 bg-gradient-to-t from-[#6366f1] to-[#a855f7] ml-1 animate-blink"></span>
-                  </div>
 
                   {/* Description */}
                   <p className="text-base md:text-lg text-gray-400 max-w-xl leading-relaxed font-light"
                     data-aos="fade-up"
                     data-aos-delay="1000">
-                    Menciptakan Website Yang Inovatif, Fungsional, dan User-Friendly untuk Solusi Digital.
+                    Turning ideas into digital experiences, from design to deployment, with a practical approach to technology and problem-solving.
                   </p>
 
                   {/* Tech Stack */}
@@ -220,31 +198,26 @@ const Home = () => {
                 data-aos="fade-left"
                 data-aos-delay="600">
                 <div className="relative w-full opacity-90">
-                  <div className={`absolute inset-0 bg-gradient-to-r from-[#6366f1]/10 to-[#a855f7]/10 rounded-3xl blur-3xl transition-all duration-700 ease-in-out ${
-                    isHovering ? "opacity-50 scale-105" : "opacity-20 scale-100"
-                  }`}>
+                  <div className={`absolute inset-0 bg-gradient-to-r from-[#6366f1]/10 to-[#a855f7]/10 rounded-3xl blur-3xl transition-all duration-700 ease-in-out ${isHovering ? "opacity-50 scale-105" : "opacity-20 scale-100"
+                    }`}>
                   </div>
 
-                  <div className={`relative lg:left-12 z-10 w-full opacity-90 transform transition-transform duration-500 ${
-                    isHovering ? "scale-105" : "scale-100"
-                  }`}>
+                  <div className={`relative lg:left-12 z-10 w-full opacity-90 transform transition-transform duration-500 ${isHovering ? "scale-105" : "scale-100"
+                    }`}>
                     <img
                       src="Animation1.gif"
                       alt="Developer Animation"
-                      className={`w-full h-full object-contain transition-all duration-500 ${
-                        isHovering 
-                          ? "scale-[95%] sm:scale-[90%] md:scale-[90%] lg:scale-[90%] rotate-2" 
-                          : "scale-[90%] sm:scale-[80%] md:scale-[80%] lg:scale-[80%]"
-                      }`}
+                      className={`w-full h-full object-contain transition-all duration-500 ${isHovering
+                        ? "scale-[95%] sm:scale-[90%] md:scale-[90%] lg:scale-[90%] rotate-2"
+                        : "scale-[90%] sm:scale-[80%] md:scale-[80%] lg:scale-[80%]"
+                        }`}
                     />
                   </div>
 
-                  <div className={`absolute inset-0 pointer-events-none transition-all duration-700 ${
-                    isHovering ? "opacity-50" : "opacity-20"
-                  }`}>
-                    <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-br from-indigo-500/10 to-purple-500/10 blur-3xl animate-[pulse_6s_cubic-bezier(0.4,0,0.6,1)_infinite] transition-all duration-700 ${
-                      isHovering ? "scale-110" : "scale-100"
+                  <div className={`absolute inset-0 pointer-events-none transition-all duration-700 ${isHovering ? "opacity-50" : "opacity-20"
                     }`}>
+                    <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-br from-indigo-500/10 to-purple-500/10 blur-3xl animate-[pulse_6s_cubic-bezier(0.4,0,0.6,1)_infinite] transition-all duration-700 ${isHovering ? "scale-110" : "scale-100"
+                      }`}>
                     </div>
                   </div>
                 </div>

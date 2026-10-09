@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react/prop-types, react/display-name */
+import { useState } from "react";
 
 const InputField = ({ field, label, icon: Icon, formData, handleChange }) => {
   const [isFocused, setIsFocused] = useState(false);

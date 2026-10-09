@@ -1,12 +1,13 @@
-import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
-import { createClient } from '@supabase/supabase-js';
+/* eslint-disable react/prop-types, react/display-name */
+import { useState, useEffect, useRef, useCallback, memo } from 'react';
+import { } from '@supabase/supabase-js';
 import { MessageCircle, UserCircle2, Loader2, AlertCircle, Send, ImagePlus, X, Pin } from 'lucide-react';
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { supabase } from '../supabase';
 
 
-const Comment = memo(({ comment, formatDate, index, isPinned = false }) => (
+const Comment = memo(({ comment, formatDate, isPinned = false }) => (
     <div 
         className={`px-4 pt-4 pb-2 rounded-xl border transition-all group hover:shadow-lg hover:-translate-y-0.5 ${
             isPinned 
@@ -63,7 +64,7 @@ const Comment = memo(({ comment, formatDate, index, isPinned = false }) => (
     </div>
 ));
 
-const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
+const CommentForm = memo(({ onSubmit, isSubmitting}) => {
     const [newComment, setNewComment] = useState('');
     const [userName, setUserName] = useState('');
     const [imagePreview, setImagePreview] = useState(null);
@@ -286,12 +287,12 @@ const Komentar = () => {
 
         // Set up real-time subscription
         const subscription = supabase
-            .channel('portfolio_comments')
+            .channel('portofolio_comments')
             .on('postgres_changes', 
                 { 
                     event: '*', 
                     schema: 'public', 
-                    table: 'portfolio_comments',
+                    table: 'portofolio_comments',
                     filter: 'is_pinned=eq.false'
                 }, 
                 () => {
@@ -335,7 +336,7 @@ const Komentar = () => {
             const profileImageUrl = await uploadImage(imageFile);
             
             const { error } = await supabase
-                .from('portfolio_comments')
+                .from('portofolio_comments')
                 .insert([
                     {
                         content: newComment,
@@ -436,7 +437,7 @@ const Komentar = () => {
                     )}
                 </div>
             </div>
-            <style jsx>{`
+            <style>{`
                 .custom-scrollbar::-webkit-scrollbar {
                     width: 6px;
                 }

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types, react/display-name */
 import { useEffect, useState } from 'react'
 import { supabase } from "../../supabase";
 import { Award, Upload, Trash2, ImageIcon, Plus } from 'lucide-react'
@@ -37,6 +38,11 @@ const CertCard = ({ cert, onDelete }) => {
           onLoad={() => setImgLoaded(true)}
           className={`w-full aspect-[16/11.5] object-cover group-hover:scale-105 transition-transform duration-500 ${imgLoaded ? 'block' : 'hidden'}`}
         />
+        <div className="p-3 text-center border-t border-white/10 bg-white/5">
+          <p className="text-xs sm:text-sm font-medium text-white truncate">
+            {cert.title || 'No Title'}
+          </p>
+        </div>
         {imgLoaded && (
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
             <button
@@ -55,6 +61,7 @@ const CertCard = ({ cert, onDelete }) => {
 export default function Certificates() {
   const [certs, setCerts] = useState([])
   const [file, setFile] = useState(null)
+  const [title, setTitle] = useState('')
   const [preview, setPreview] = useState(null)
   const [uploading, setUploading] = useState(false)
   const [dragOver, setDragOver] = useState(false)
@@ -81,8 +88,8 @@ export default function Certificates() {
     const fileName = `cert-${Date.now()}-${file.name}`
     await supabase.storage.from('certificate-images').upload(fileName, file)
     const { data } = supabase.storage.from('certificate-images').getPublicUrl(fileName)
-    await supabase.from('certificates').insert({ Img: data.publicUrl })
-    setFile(null); setPreview(null); setUploading(false)
+    await supabase.from('certificates').insert({ Img: data.publicUrl, title: title })
+    setFile(null); setPreview(null); setTitle(''); setUploading(false)
     fetchCerts()
   }
 

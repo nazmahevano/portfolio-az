@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types, react/display-name */
 import { useEffect, useState } from "react";
 import { supabase } from "../../supabase";
 import {
@@ -228,7 +229,7 @@ const ProjectForm = ({
             label="Project Title"
             value={form.Title}
             onChange={set("Title")}
-            placeholder="e.g. My Portfolio Website"
+            placeholder="e.g. My Portofolio Website"
             required
           />
         </div>

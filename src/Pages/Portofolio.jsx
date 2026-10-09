@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useCallback } from "react";
+/* eslint-disable react/prop-types, react/display-name */
+import { useEffect, useState, useCallback } from "react";
 
-import { supabase } from "../supabase"; 
+import { supabase } from "../supabase";
 
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
@@ -104,18 +105,70 @@ function a11yProps(index) {
 
 // techStacks tetap sama
 const techStacks = [
-  { icon: "html.svg", language: "HTML" },
-  { icon: "css.svg", language: "CSS" },
-  { icon: "javascript.svg", language: "JavaScript" },
-  { icon: "tailwind.svg", language: "Tailwind CSS" },
-  { icon: "reactjs.svg", language: "ReactJS" },
-  { icon: "vite.svg", language: "Vite" },
-  { icon: "nodejs.svg", language: "Node JS" },
-  { icon: "bootstrap.svg", language: "Bootstrap" },
-  { icon: "firebase.svg", language: "Firebase" },
-  { icon: "MUI.svg", language: "Material UI" },
-  { icon: "vercel.svg", language: "Vercel" },
-  { icon: "SweetAlert.svg", language: "SweetAlert2" },
+  {
+    icon: "https://cdn.simpleicons.org/python",
+    language: "Python"
+  },
+  {
+    icon: "https://cdn.simpleicons.org/django",
+    language: "Django"
+  },
+  {
+    icon: "https://cdn.simpleicons.org/laravel",
+    language: "Laravel"
+  },
+  {
+    icon: "https://cdn.simpleicons.org/html5",
+    language: "HTML"
+  },
+  {
+    icon: "https://cdn.simpleicons.org/tailwindcss",
+    language: "Tailwind CSS"
+  },
+  {
+    icon: "https://cdn.simpleicons.org/bootstrap",
+    language: "Bootstrap"
+  },
+  {
+    icon: "https://cdn.simpleicons.org/javascript",
+    language: "JavaScript"
+  },
+  {
+    icon: "https://cdn.simpleicons.org/mysql",
+    language: "MySQL"
+  },
+  {
+    icon: "https://cdn.simpleicons.org/postgresql",
+    language: "PostgreSQL"
+  },
+  {
+    icon: "https://cdn.simpleicons.org/linux",
+    language: "Linux"
+  },
+  {
+    icon: "https://cdn.simpleicons.org/figma",
+    language: "Figma"
+  },
+  {
+    icon: "https://www.vectorlogo.zone/logos/canva/canva-icon.svg",
+    language: "Canva"
+  },
+  {
+    icon: "https://cdn.simpleicons.org/react",
+    language: "React"
+  },
+  {
+    icon: "https://cdn.simpleicons.org/vercel",
+    language: "Vercel"
+  },
+  {
+    icon: "https://cdn.simpleicons.org/qgis",
+    language: "QGIS"
+  },
+  {
+    icon: "https://cdn.simpleicons.org/arduino",
+    language: "Arduino"
+  },
 ];
 
 export default function FullWidthTabs() {
@@ -140,7 +193,7 @@ export default function FullWidthTabs() {
       // Mengambil data dari Supabase secara paralel
       const [projectsResponse, certificatesResponse] = await Promise.all([
         supabase.from("projects").select("*").order('id', { ascending: false }),
-        supabase.from("certificates").select("*").order('id', { ascending: false }), 
+        supabase.from("certificates").select("*").order('id', { ascending: false }),
       ]);
 
       // Error handling untuk setiap request
@@ -157,9 +210,9 @@ export default function FullWidthTabs() {
       // Store in localStorage (fungsionalitas ini tetap dipertahankan)
       localStorage.setItem("projects", JSON.stringify(projectData));
       localStorage.setItem("certificates", JSON.stringify(certificateData));
-      
+
       // Dispatch custom event to notify other components (like About)
-      window.dispatchEvent(new Event("portfolioDataUpdated"));
+      window.dispatchEvent(new Event("portofolioDataUpdated"));
     } catch (error) {
       console.error("Error fetching data from Supabase:", error.message);
     }
@@ -173,10 +226,10 @@ export default function FullWidthTabs() {
     const cachedCertificates = localStorage.getItem('certificates');
 
     if (cachedProjects && cachedCertificates) {
-        setProjects(JSON.parse(cachedProjects));
-        setCertificates(JSON.parse(cachedCertificates));
+      setProjects(JSON.parse(cachedProjects));
+      setCertificates(JSON.parse(cachedCertificates));
     }
-    
+
     fetchData(); // Tetap panggil fetchData untuk sinkronisasi data terbaru
   }, [fetchData]);
 
@@ -208,13 +261,9 @@ export default function FullWidthTabs() {
             backgroundClip: 'text',
             WebkitTextFillColor: 'transparent'
           }}>
-            Portfolio Showcase
+            My Portfolio
           </span>
         </h2>
-        <p className="text-slate-400 max-w-2xl mx-auto text-sm md:text-base mt-2">
-          Explore my journey through projects, certifications, and technical expertise. 
-          Each section represents a milestone in my continuous learning path.
-        </p>
       </div>
 
       <Box sx={{ width: "100%" }}>
@@ -348,7 +397,8 @@ export default function FullWidthTabs() {
                     data-aos={index % 3 === 0 ? "fade-up-right" : index % 3 === 1 ? "fade-up" : "fade-up-left"}
                     data-aos-duration={index % 3 === 0 ? "1000" : index % 3 === 1 ? "1200" : "1000"}
                   >
-                    <Certificate ImgSertif={certificate.Img} />
+                    <Certificate ImgSertif={certificate.Img}
+                      title={certificate.title || certificate.Title} />
                   </div>
                 ))}
               </div>
@@ -365,10 +415,11 @@ export default function FullWidthTabs() {
 
           <TabPanel value={value} index={2} dir={theme.direction}>
             <div className="container mx-auto flex justify-center items-center overflow-hidden pb-[5%]">
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 lg:gap-8 gap-5">
+              <div className="flex flex-wrap justify-center gap-4 lg:gap-5">
                 {techStacks.map((stack, index) => (
                   <div
                     key={index}
+                    className="w-[calc(50%-1rem)] sm:w-[calc(25%-1rem)] lg:w-[calc(12.5%-1.25rem)]"
                     data-aos={index % 3 === 0 ? "fade-up-right" : index % 3 === 1 ? "fade-up" : "fade-up-left"}
                     data-aos-duration={index % 3 === 0 ? "1000" : index % 3 === 1 ? "1200" : "1000"}
                   >

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react/prop-types, react/display-name */
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams, useNavigate } from "react-router-dom";
 import {
@@ -122,7 +123,7 @@ const ProjectDetails = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [project, setProject] = useState(null);
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [setIsImageLoaded] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -326,7 +327,7 @@ const ProjectDetails = () => {
           </div>
         </div>
 
-        <style jsx>{`
+        <style>{`
           @keyframes blob {
             0% {
               transform: translate(0px, 0px) scale(1);

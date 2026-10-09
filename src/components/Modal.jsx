@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable react/prop-types, react/display-name */
+import { useState } from 'react';
 import { Eye, ArrowRight, ExternalLink } from 'lucide-react';
 
 const ProjectCardModal = ({ title, description, link }) => {

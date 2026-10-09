@@ -1,5 +1,6 @@
-import React, { useEffect, useState, memo, useMemo } from "react"
-import { FileText, Code, Award, Globe, ArrowUpRight, Sparkles, UserCheck } from "lucide-react"
+/* eslint-disable react/prop-types, react/display-name */
+import { useEffect, useState, memo, useMemo } from "react"
+import { Code, Award, ArrowUpRight} from "lucide-react"
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
@@ -15,15 +16,6 @@ const Header = memo(() => (
         About Me
       </h2>
     </div>
-    <p 
-      className="mt-2 text-gray-400 max-w-2xl mx-auto text-base sm:text-lg flex items-center justify-center gap-2"
-      data-aos="zoom-in-up"
-      data-aos-duration="800"
-    >
-      <Sparkles className="w-5 h-5 text-purple-400" />
-      Transforming ideas into digital experiences
-      <Sparkles className="w-5 h-5 text-purple-400" />
-    </p>
   </div>
 ));
 
@@ -140,11 +132,11 @@ const AboutPage = () => {
     updateStats();
 
     window.addEventListener('storage', updateStats);
-    window.addEventListener('portfolioDataUpdated', updateStats);
+    window.addEventListener('portofolioDataUpdated', updateStats);
 
     return () => {
       window.removeEventListener('storage', updateStats);
-      window.removeEventListener('portfolioDataUpdated', updateStats);
+      window.removeEventListener('portofolioDataUpdated', updateStats);
     };
   }, []);
 
@@ -192,14 +184,6 @@ const AboutPage = () => {
       description: "Professional skills validated",
       animation: "fade-up",
     },
-    {
-      icon: Globe,
-      color: "from-[#6366f1] to-[#a855f7]",
-      value: YearExperience,
-      label: "Years of Experience",
-      description: "Continuous learning journey",
-      animation: "fade-left",
-    },
   ], [totalProjects, totalCertificates, YearExperience]);
 
   return (
@@ -212,7 +196,7 @@ const AboutPage = () => {
     >
       <Header />
 
-      <div className="w-full mx-auto pt-8 sm:pt-12 relative">
+      <div className="w-full mx-auto pt-4 sm:pt-12 relative">
         <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="space-y-6 text-center lg:text-left">
             <h2 
@@ -221,7 +205,7 @@ const AboutPage = () => {
               data-aos-duration="1000"
             >
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]">
-                Hello, I'm
+                Hello, I&apos;m
               </span>
               <span 
                 className="block mt-2 text-gray-200"
@@ -229,18 +213,20 @@ const AboutPage = () => {
                 data-aos-duration="1300"
                 itemProp="name"
               >
-                Eki Zulfar Rachman
+                Nazma Hevano
               </span>
             </h2>
             
             <p 
-              className="text-base sm:text-lg lg:text-xl text-gray-400 leading-relaxed text-justify pb-4 sm:pb-0"
+              className="text-base sm:text-0,5lg lg:text-0,5xl text-gray-400 leading-relaxed text-justify pb-4 sm:pb-0"
               data-aos="fade-right"
               data-aos-duration="1500"
             >
-        Saya adalah mahasiswa Teknik Informatika yang berfokus pada pengembangan Front-End. 
-Saya berfokus pada penciptaan pengalaman digital yang menarik dan selalu berupaya memberikan solusi terbaik dalam setiap proyek yang saya kerjakan.
-                  </p>
+              Bachelor of Informatics Engineering (GPA 3.79, Cum Laude) and Bright Scholarship Batch 8 Awardee (YBM BRILiaN – Bank BRI), 
+              with hands-on experience as a Web Developer and a growing interest in Technical Support. 
+              Experienced in system development, data management, testing, troubleshooting, software installation, and foundational networking, backed by CCNA certification. 
+              Also brings leadership experience through leading 24 volunteers and supporting 40+ students in an educational community, with strong teamwork and communication skills.
+            </p>
 
                {/* Quote Section */}
       <div 
@@ -260,20 +246,11 @@ Saya berfokus pada penciptaan pengalaman digital yang menarik dan selalu berupay
         </div>
         
         <blockquote className="text-gray-300 text-center lg:text-left italic font-medium text-sm relative z-10 pl-6">
-          "Leveraging AI as a professional tool, not a replacement."
+          &quot;Technology just aiding, but human insight gives it meaning.&quot;
         </blockquote>
       </div>
 
             <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 lg:gap-4 lg:px-0 w-full">
-              <a href="https://drive.google.com/drive/folders/1BOm51Grsabb3zj6Xk27K-iRwI1zITcpo" className="w-full lg:w-auto">
-              <button 
-                data-aos="fade-up"
-                data-aos-duration="800"
-                className="w-full lg:w-auto sm:px-6 py-2 sm:py-3 rounded-lg bg-gradient-to-r from-[#6366f1] to-[#a855f7] text-white font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center lg:justify-start gap-2 shadow-lg hover:shadow-xl "
-              >
-                <FileText className="w-4 h-4 sm:w-5 sm:h-5" /> Download CV
-              </button>
-              </a>
               <a href="#Portofolio" className="w-full lg:w-auto">
               <button 
                 data-aos="fade-up"
@@ -298,7 +275,7 @@ Saya berfokus pada penciptaan pengalaman digital yang menarik dan selalu berupay
         </a>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-20px); }

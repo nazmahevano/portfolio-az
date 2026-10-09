@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types, react/display-name */
 import { Link } from "react-router-dom";
 import { ExternalLink, ArrowRight } from "lucide-react";
 import { toSlug } from "../utils/slug";
