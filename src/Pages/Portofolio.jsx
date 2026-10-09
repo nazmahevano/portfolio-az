@@ -146,6 +146,10 @@ const techStacks = [
     language: "Linux"
   },
   {
+    icon: "https://cdn.simpleicons.org/supabase/3FCF8E",
+    language: "Supabase"
+  },
+  {
     icon: "https://cdn.simpleicons.org/figma",
     language: "Figma"
   },
@@ -415,11 +419,11 @@ export default function FullWidthTabs() {
 
           <TabPanel value={value} index={2} dir={theme.direction}>
             <div className="container mx-auto flex justify-center items-center overflow-hidden pb-[5%]">
-              <div className="flex flex-wrap justify-center gap-4 lg:gap-5">
+              <div className="flex flex-wrap justify-center gap-5 lg:gap-8">
                 {techStacks.map((stack, index) => (
                   <div
                     key={index}
-                    className="w-[calc(50%-1rem)] sm:w-[calc(25%-1rem)] lg:w-[calc(12.5%-1.25rem)]"
+                    className="w-[calc(50%-1.25rem)] sm:w-[calc(33.333%-1.25rem)] lg:w-[calc(16.666%-1.5rem)]"
                     data-aos={index % 3 === 0 ? "fade-up-right" : index % 3 === 1 ? "fade-up" : "fade-up-left"}
                     data-aos-duration={index % 3 === 0 ? "1000" : index % 3 === 1 ? "1200" : "1000"}
                   >
